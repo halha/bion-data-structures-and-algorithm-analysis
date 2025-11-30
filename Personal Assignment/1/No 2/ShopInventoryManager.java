@@ -4,9 +4,9 @@ class Barang {
 
   public String nama;
   public int jumlahStok;
-  public int harga;
+  public double harga;
 
-  public Barang(String nama, int jumlahStok, int harga) {
+  public Barang(String nama, int jumlahStok, double harga) {
     this.nama = nama;
     this.jumlahStok = jumlahStok;
     this.harga = harga;
@@ -15,7 +15,9 @@ class Barang {
 
 public class ShopInventoryManager {
 
-  public static void GetListBarang(Barang[] listBarang) {
+  private static Barang[] listBarang = new Barang[10];
+
+  public static void GetListBarang() {
     System.out.println("Inventaris Toko:");
 
     for (int i = 0; i < listBarang.length; i++) {
@@ -27,13 +29,13 @@ public class ShopInventoryManager {
           ", Jumlah Stok: " +
           listBarang[i].jumlahStok +
           ", Harga: " +
-          listBarang[i].harga
+          (int) listBarang[i].harga
         );
       }
     }
   }
 
-  public static void AddBarang(Barang barang, Barang[] listBarang) {
+  public static void AddBarang(Barang barang) {
     for (int i = 0; i < listBarang.length; i++) {
       if (listBarang[i] == null) {
         listBarang[i] = barang;
@@ -44,7 +46,7 @@ public class ShopInventoryManager {
     System.out.println("Error: inventory full, can't add barang.");
   }
 
-  public static int checkIsBarangExist(Barang[] listBarang, String nama) {
+  public static int checkIsBarangExist(String nama) {
     for (int i = 0; i < listBarang.length; i++) {
       if (listBarang[i] != null && listBarang[i].nama.equalsIgnoreCase(nama)) {
         return i;
@@ -54,8 +56,8 @@ public class ShopInventoryManager {
     return -1;
   }
 
-  public static void updateStok(Barang[] listBarang, String nama, int newStok) {
-    int barangIndex = checkIsBarangExist(listBarang, nama);
+  public static void updateStok(String nama, int newStok) {
+    int barangIndex = checkIsBarangExist(nama);
 
     if (barangIndex != -1) {
       listBarang[barangIndex].jumlahStok = newStok;
@@ -69,8 +71,8 @@ public class ShopInventoryManager {
     System.out.println("Barang not found.");
   }
 
-  public static void searchBarang(Barang[] listBarang, String nama) {
-    int barangIndex = checkIsBarangExist(listBarang, nama);
+  public static void searchBarang(String nama) {
+    int barangIndex = checkIsBarangExist(nama);
 
     if (barangIndex != -1) {
       System.out.println("Hasil pencarian:");
@@ -80,7 +82,7 @@ public class ShopInventoryManager {
         ", Jumlah Stok: " +
         listBarang[barangIndex].jumlahStok +
         ", Harga: " +
-        listBarang[barangIndex].harga
+        (int) listBarang[barangIndex].harga
       );
     } else {
       System.out.println("Barang not found.");
@@ -90,14 +92,12 @@ public class ShopInventoryManager {
   public static void main(String[] args) {
     Scanner sc = new Scanner(System.in);
 
-    Barang[] listBarang = new Barang[10];
+    AddBarang(new Barang("Coffee Sachet", 50, 3000));
+    AddBarang(new Barang("Tea (small box)", 30, 12000));
+    AddBarang(new Barang("Matcha Sachet", 20, 7000));
+    AddBarang(new Barang("Air", 100, 2500));
 
-    AddBarang(new Barang("Coffee Sachet", 50, 3000), listBarang);
-    AddBarang(new Barang("Tea (small box)", 30, 12000), listBarang);
-    AddBarang(new Barang("Matcha Sachet", 20, 7000), listBarang);
-    AddBarang(new Barang("Air", 100, 2500), listBarang);
-
-    GetListBarang(listBarang);
+    GetListBarang();
     System.out.println();
 
     System.out.print("Masukkan nama barang yang ingin diupdate: ");
@@ -107,14 +107,14 @@ public class ShopInventoryManager {
     int stokBaru = sc.nextInt();
     sc.nextLine();
 
-    updateStok(listBarang, namaUpdate, stokBaru);
+    updateStok(namaUpdate, stokBaru);
 
     System.out.println("\nInventaris setelah diupdate:");
-    GetListBarang(listBarang);
+    GetListBarang();
 
     System.out.print("\nMasukkan nama barang yang dicari: ");
     String namaCari = sc.nextLine();
 
-    searchBarang(listBarang, namaCari);
+    searchBarang(namaCari);
   }
 }
