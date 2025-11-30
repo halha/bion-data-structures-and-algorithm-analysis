@@ -15,30 +15,30 @@ class Barang {
 
 public class ShopInventoryManager {
 
-  private static Barang[] listBarang = new Barang[10];
+  private static Barang[] inventaris = new Barang[10];
 
   public static void GetListBarang() {
     System.out.println("Inventaris Toko:");
 
-    for (int i = 0; i < listBarang.length; i++) {
-      if (listBarang[i] != null) {
+    for (int i = 0; i < inventaris.length; i++) {
+      if (inventaris[i] != null) {
         System.out.println(
           (i + 1) +
           ". Nama: " +
-          listBarang[i].nama +
+          inventaris[i].nama +
           ", Jumlah Stok: " +
-          listBarang[i].jumlahStok +
+          inventaris[i].jumlahStok +
           ", Harga: " +
-          (int) listBarang[i].harga
+          (int) inventaris[i].harga
         );
       }
     }
   }
 
   public static void AddBarang(Barang barang) {
-    for (int i = 0; i < listBarang.length; i++) {
-      if (listBarang[i] == null) {
-        listBarang[i] = barang;
+    for (int i = 0; i < inventaris.length; i++) {
+      if (inventaris[i] == null) {
+        inventaris[i] = barang;
         return;
       }
     }
@@ -47,8 +47,8 @@ public class ShopInventoryManager {
   }
 
   public static int checkIsBarangExist(String nama) {
-    for (int i = 0; i < listBarang.length; i++) {
-      if (listBarang[i] != null && listBarang[i].nama.equalsIgnoreCase(nama)) {
+    for (int i = 0; i < inventaris.length; i++) {
+      if (inventaris[i] != null && inventaris[i].nama.equalsIgnoreCase(nama)) {
         return i;
       }
     }
@@ -60,7 +60,7 @@ public class ShopInventoryManager {
     int barangIndex = checkIsBarangExist(nama);
 
     if (barangIndex != -1) {
-      listBarang[barangIndex].jumlahStok = jumlahBaru;
+      inventaris[barangIndex].jumlahStok = jumlahBaru;
 
       System.out.println();
       System.out.println("Successfully update stock!");
@@ -78,11 +78,11 @@ public class ShopInventoryManager {
       System.out.println("Hasil pencarian:");
       System.out.println(
         "Nama: " +
-        listBarang[barangIndex].nama +
+        inventaris[barangIndex].nama +
         ", Jumlah Stok: " +
-        listBarang[barangIndex].jumlahStok +
+        inventaris[barangIndex].jumlahStok +
         ", Harga: " +
-        (int) listBarang[barangIndex].harga
+        (int) inventaris[barangIndex].harga
       );
     } else {
       System.out.println("Barang not found.");
