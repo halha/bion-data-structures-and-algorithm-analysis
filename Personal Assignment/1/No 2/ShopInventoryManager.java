@@ -56,11 +56,11 @@ public class ShopInventoryManager {
     return -1;
   }
 
-  public static void updateStok(String nama, int newStok) {
+  public static void updateStok(String nama, int jumlahBaru) {
     int barangIndex = checkIsBarangExist(nama);
 
     if (barangIndex != -1) {
-      listBarang[barangIndex].jumlahStok = newStok;
+      listBarang[barangIndex].jumlahStok = jumlahBaru;
 
       System.out.println();
       System.out.println("Successfully update stock!");
@@ -71,7 +71,7 @@ public class ShopInventoryManager {
     System.out.println("Barang not found.");
   }
 
-  public static void searchBarang(String nama) {
+  public static void cariBarang(String nama) {
     int barangIndex = checkIsBarangExist(nama);
 
     if (barangIndex != -1) {
@@ -115,6 +115,6 @@ public class ShopInventoryManager {
     System.out.print("\nMasukkan nama barang yang dicari: ");
     String namaCari = sc.nextLine();
 
-    searchBarang(namaCari);
+    cariBarang(namaCari);
   }
 }
