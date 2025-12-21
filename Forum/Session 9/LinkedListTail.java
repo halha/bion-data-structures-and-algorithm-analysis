@@ -1,3 +1,14 @@
+/*
+  NOTES : 
+  - code ini saya gunakan untuk menjawab forum "inserting an element at the tail" session 9 matkul Data Structures and Algorithm Analysis
+
+	- case yang saya gunakan akan berhubungan dengan game karena saya biasa dengan logika game dan case-case dari game
+	lebih mudah untuk saya jelaskan
+
+  - saya biasanya membuat game menggunakan C#, tapi karena lacture notes menggunakan Java
+  maka code ini juga menggunakan java
+*/
+
 // class ini adalah dasar node untuk linked list single
 // dalam case ini, nodenya adalah player dalam game
 class Node {
