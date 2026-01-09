@@ -80,7 +80,7 @@ class Inventory {
   }
 
   // function untuk menghapus item dari tail
-  void popItem() {
+  void removeItem() {
     // jika isi tail kosong (list masih kosong), cukup return saja, tidak ada lanjutan function
     // untuk opsi lain terutama dalam kasus nyata game
     // cukup dengan non active kan tombol remove item
@@ -105,7 +105,7 @@ class Inventory {
   }
 
   // function untuk menghapus item dari head
-  void popItemFront() {
+  void removeItemFront() {
     if (head == null) return;
 
     String removed = head.itemName;
@@ -160,16 +160,16 @@ public class DoublyLinkedListPushPop {
 
     System.out.println();
 
-    // panggil function popitem untuk menghapus item terakhir
-    inventory.popItem();
+    // panggil function removeitem untuk menghapus item terakhir
+    inventory.removeItem();
 
     // jika benar seharusnya item shield sudah tidak ada
     inventory.displayItem();
 
     System.out.println();
 
-    // panggul function popItemFront untuk menghapus item pertama
-    inventory.popItemFront();
+    // panggul function removeItemFront untuk menghapus item pertama
+    inventory.removeItemFront();
 
     // jika benar, seharusnya sekarang item potion sudah tidak ada juga
     inventory.displayItem();
