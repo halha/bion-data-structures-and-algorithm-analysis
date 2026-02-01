@@ -24,6 +24,17 @@ public class RecursiveGame {
     return 100 + calculateExp(monster - 1);
   }
 
+  // function alternative dimana function ini lebih efisien
+  static int calculateExpLoopVersion(int monster) {
+    int totalExp = 0;
+
+    for (int i = 1; i <= monster; i++) {
+      totalExp += 100;
+    }
+
+    return totalExp;
+  }
+
   public static void main(String[] args) {
     // var dummy untuk testing berapa monster untuk simulasi
     int monsterCount = 5;
